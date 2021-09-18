@@ -4,7 +4,7 @@
   "description": "A backend developer role assignment at Pangaea",
   "main": "Pangaea.ts",
   "scripts": {
-    "test": "nodemon Pangaea.ts"
+    "start": "nodemon Pangaea.ts"
   },
   "repository": {
     "type": "git",
