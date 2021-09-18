@@ -1,0 +1,28 @@
+{
+  "name": "pangaea",
+  "version": "1.0.0",
+  "description": "A backend developer role assignment at Pangaea",
+  "main": "Pangaea.ts",
+  "scripts": {
+    "test": "nodemon Pangaea.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/billzberry/pangaea.git"
+  },
+  "author": "oseiGyapong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/billzberry/pangaea/issues"
+  },
+  "homepage": "https://github.com/billzberry/pangaea#readme",
+  "dependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.9.2",
+    "@types/socket.io": "^3.0.2",
+    "@types/socket.io-client": "^3.0.0",
+    "express": "^4.17.1",
+    "socket.io": "^4.2.0",
+    "socket.io-client": "^4.2.0"
+  }
+}
