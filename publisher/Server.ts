@@ -1,4 +1,7 @@
 import express from 'express'
+import HomeRouter from './routers/HomeRouter'
+import PublishRouter from './routers/PublishRouter'
+import SubscribeRouter from './routers/SubscribeRouter'
 
 /**
  * Publisher Server
@@ -19,18 +22,24 @@ class Publisher {
      * This method starts the running process of Publisher Server
      */
     private startServer() {
+        //Let server process incoming body data as json
         this._Server.use(express.json())
+
+        //Also optionally process url encoded body data
         this._Server.use(express.urlencoded({extended: false}))
 
-        this._Server.get('/', (request:express.Request, response:express.Response) => {
-            response.status(200).json({
-                status: 'Success',
-                message: 'Welcome to the publisher'
-            })
-        })
+        //Router to serve the home route
+        this._Server.use('/', HomeRouter)
 
+        //Router to serve subscriptions
+        this._Server.use('/subscribe', SubscribeRouter)
+
+        //Router to serve the publish route
+        this._Server.use('/publish', PublishRouter)
+
+        //Start server and listen to port
         this._Server.listen(this._Port, this._Host, () => {
-            console.log(`Publisher Server has started and running on http://${this._Host}:${this._Port}`);
+            console.log(`Publisher Server has started and running on http://${this._Host}:${this._Port}`)
         })
     }
 }
