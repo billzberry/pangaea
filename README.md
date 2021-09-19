@@ -54,6 +54,6 @@
     curl -X POST -H "Content-Type: application/json" -d '{"message": "hello"}' http://localhost:8000/publish/topic1
   ```
 
-
-* **Error Response:**
+**Project Logs (prints or console.logs):**
+----
     Project logs are created automatically into logs folder in these directories [publisher, subscriber]
