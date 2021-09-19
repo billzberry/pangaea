@@ -4,10 +4,16 @@ import LogWriter from '../../models/LogWriter'
 
 const SubscribeRouter:express.Router = express.Router()
 
+/**
+ * Subscribe Post Router
+ * eg. http://127.0.0.1:8000/subscribe/topic1
+ */
 SubscribeRouter.post('/:id', (request:express.Request, response:express.Response) => {
     try {
+        //Initialize DataStore 
         const dataStore:DataStore = new DataStore()
 
+        //Insert subscription topic and url to data store
         let result = dataStore.insert({
             topic: request.params.id,
             url: request.body.url

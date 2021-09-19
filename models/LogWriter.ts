@@ -1,5 +1,11 @@
 import { createWriteStream, existsSync, mkdirSync } from 'fs'
 
+/**
+ * 
+ * @param pathToLogDirectory - The path to the directory where log files are stored
+ * @param logType - The type of file the log message should be written into [error, system, request]
+ * @param data - The message to be written
+ */
 const LogWriter = (pathToLogDirectory: string, logType: string, data: string) => {
     try {
         const logFile: string = logType + '.log'
