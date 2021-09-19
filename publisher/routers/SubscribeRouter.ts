@@ -1,5 +1,6 @@
 import express from 'express'
 import DataStore from '../../data/DataStore'
+import LogWriter from '../../models/LogWriter'
 
 const SubscribeRouter:express.Router = express.Router()
 
@@ -23,7 +24,7 @@ SubscribeRouter.post('/:id', (request:express.Request, response:express.Response
             })
         }
     } catch (error) {
-        console.log(`Error posting subscriber topic: => `, error)
+        LogWriter('../publisher/logs', 'error', `Error posting subscriber topic: => ${JSON.stringify(error)}`)
         response.status(502).json({
             status: 'Bad Gateway',
             message: 'Something went wrong'

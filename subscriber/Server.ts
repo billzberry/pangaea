@@ -1,4 +1,5 @@
 import express from 'express'
+import LogWriter from '../models/LogWriter'
 
 /**
  * Subscriber Server
@@ -29,8 +30,16 @@ class Subscriber {
             })
         })
 
+        this._Server.post('/:id', (request:express.Request, response:express.Response) => {
+            LogWriter('../subscriber/logs', 'system', `Subscriber endpoint ${request.params.id} received: => ${JSON.stringify(request.body)}`)
+            response.status(200).json({
+                status: 'Success',
+                message: 'Data received successfully'
+            })
+        })
+
         this._Server.listen(this._Port, this._Host, () => {
-            console.log(`Subscriber Server has started and running on http://${this._Host}:${this._Port}`);
+            LogWriter('../subscriber/logs', 'system', `Subscriber Server has started and running on http://${this._Host}:${this._Port}`)
         })
     }
 }

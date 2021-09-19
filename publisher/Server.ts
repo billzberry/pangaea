@@ -2,6 +2,8 @@ import express from 'express'
 import HomeRouter from './routers/HomeRouter'
 import PublishRouter from './routers/PublishRouter'
 import SubscribeRouter from './routers/SubscribeRouter'
+import ServerLogger from '../middleware/ServerLogger'
+import LogWriter from '../models/LogWriter'
 
 /**
  * Publisher Server
@@ -22,6 +24,9 @@ class Publisher {
      * This method starts the running process of Publisher Server
      */
     private startServer() {
+        //Logger middleware
+        this._Server.use(ServerLogger)
+
         //Let server process incoming body data as json
         this._Server.use(express.json())
 
@@ -39,7 +44,7 @@ class Publisher {
 
         //Start server and listen to port
         this._Server.listen(this._Port, this._Host, () => {
-            console.log(`Publisher Server has started and running on http://${this._Host}:${this._Port}`)
+            LogWriter('../publisher/logs', 'system', `Publisher Server has started and running on http://${this._Host}:${this._Port}`)
         })
     }
 }

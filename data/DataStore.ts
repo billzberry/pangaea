@@ -1,4 +1,5 @@
 import {readFileSync, writeFileSync} from 'fs'
+import LogWriter from '../models/LogWriter'
 
 type dataItem = {
     topic:string,
@@ -23,7 +24,7 @@ class DataStore {
             writeFileSync(__dirname+'/MainData.json', JSON.stringify(this._dataStore))
             return true
         } catch (error) {
-            console.log(`Error inserting data: => `, error)
+            LogWriter('../publisher/logs', 'error', `Error inserting data: => ${JSON.stringify(error)}`)
             return false
         }
     }
@@ -36,7 +37,7 @@ class DataStore {
                 return []
             }
         } catch (error) {
-            console.log(`Error getting subscribers: => `, error)
+            LogWriter('../publisher/logs', 'error', `Error getting subscribers: => ${JSON.stringify(error)}`)
             return []
         }
     }
