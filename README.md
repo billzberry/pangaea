@@ -6,8 +6,10 @@
 
 * **URL**
 
-  /publish/:id - eg. http://127.0.0.1:8000/publish/topic1
-  /subscribe/:id - eg. http://127.0.0.1:8000/subscribe/topic1
+    ```
+        /publish/:id - eg. http://127.0.0.1:8000/publish/topic1
+        /subscribe/:id - eg. http://127.0.0.1:8000/subscribe/topic1
+    ```
 
 * **Method:**
 
