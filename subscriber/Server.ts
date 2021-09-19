@@ -1,4 +1,5 @@
 import express from 'express'
+import ServerLogger from '../middleware/SubscriberMiddleware'
 import LogWriter from '../models/LogWriter'
 
 /**
@@ -20,6 +21,9 @@ class Subscriber {
      * This method starts the running process of Subscriber Server
      */
     private startServer() {
+        //Logger middleware
+        this._Server.use(ServerLogger)
+
         this._Server.use(express.json())
         this._Server.use(express.urlencoded({extended: false}))
 
